@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capstone Project 3 - Public API</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="posCenter">
+        Current weather forecast for any location on Earth!
+      </h1>
+    </div>
+    <div class="container">
+      <div class="results">
+        <%if(locals.result){ %>
+        <p class="posStart">
+          <span class="fw-600">Location: </span><%= result.data.name %>
+        </p>
+        <hr />
+        <p class="posStart">
+          <span class="fw-600">Temperature: </span><%= result.data.main.temp
+          %>°C
+        </p>
+        <p class="posStart">
+          <span class="fw-600">Real feel: </span><%= result.data.main.feels_like
+          %>°C
+        </p>
+        <p class="posStart">
+          <span class="fw-600">Humidity: </span><%= result.data.main.humidity
+          %>%
+        </p>
+        <p class="posStart">
+          <span class="fw-600">Atmospheric pressure: </span><%=
+          result.data.main.pressure %> hPa
+        </p>
+        <p class="posStart">
+          <span class="fw-600">Wind: </span><%= result.data.wind.speed %> m/s
+        </p>
+        <p class="posStart">
+          <span class="fw-600">Clouds: </span><%= result.data.clouds.all %>%
+        </p>
+        <hr />
+        <% } %> <%if(locals.sunriseTime){ %>
+        <p class="posStart">
+          <span class="fw-600">Sunrise time: </span><%= sunriseTime %>
+        </p>
+        <% } %> <%if(locals.sunsetTime){ %>
+        <p class="posStart">
+          <span class="fw-600">Sunset time: </span><%= sunsetTime %>
+        </p>
+        <% } %> <%if(locals.error){ %>
+        <p><%= error %></p>
+        <% } %>
+      </div>
+      <hr />
+      <h3 class="posStart">Search by coordinates:</h3>
+      <form method="POST" action="/coordinates">
+        <div class="field">
+          <div class="labelBox posStart">
+            <label for="latInput" class="label">Latitude:</label>
+          </div>
+          <div class="inputBox">
+            <input
+              type="text"
+              id="latInput"
+              name="lat"
+              placeholder="e.g. 50,26"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="labelBox posStart">
+            <label for="lonInput" class="label">Longitude:</label>
+          </div>
+          <div class="inputBox">
+            <input
+              type="text"
+              id="lonInput"
+              name="lon"
+              placeholder="e.g. 19,03"
+            />
+          </div>
+        </div>
+
+        <div class="posEnd">
+          <button type="submit">Check</button>
+        </div>
+      </form>
+
+      <h3 class="posStart">Search by city name:</h3>
+      <form method="POST" action="/city-name">
+        <div class="field">
+          <div class="labelBox posStart">
+            <label for="cityInput" class="label">City name:</label>
+          </div>
+          <div class="inputBox">
+            <input
+              type="text"
+              id="cityInput"
+              name="city"
+              placeholder="e.g. Katowice"
+            />
+          </div>
+        </div>
+
+        <div class="posEnd">
+          <button type="submit">Check</button>
+        </div>
+      </form>
+
+      <h3 class="posStart">Search by zip code:</h3>
+      <form method="POST" action="/zip-code">
+        <div class="field">
+          <div class="labelBox posStart">
+            <label for="zipCodeInput" class="label">Zip code:</label>
+          </div>
+          <div class="inputBox">
+            <input
+              type="text"
+              id="zipCodeInput"
+              name="zipCode"
+              placeholder="e.g. 40-276"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="labelBox posStart">
+            <label for="countryCodeInput" class="label">Country code:</label>
+          </div>
+          <div class="inputBox">
+            <input
+              type="text"
+              id="countryCodeInput"
+              name="countryCode"
+              placeholder="e.g. pl"
+            />
+          </div>
+        </div>
+
+        <div class="posEnd">
+          <button type="submit">Check</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
