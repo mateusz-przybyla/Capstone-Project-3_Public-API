@@ -55,7 +55,10 @@
         <p><%= error %></p>
         <% } %>
       </div>
+      <%if(locals.result || locals.error){ %>
       <hr />
+      <%}%>
+
       <h3 class="posStart">Search by coordinates:</h3>
       <form method="POST" action="/coordinates">
         <div class="field">
