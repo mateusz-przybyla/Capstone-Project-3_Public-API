@@ -1,4 +1,4 @@
-# Web Development Bootcamp - Capstone-Project-3_Public-API
+# Capstone-Project-3_Public-API
 
 A simple website using the Express/Node.js platform, with Axios HTTP client, that integrates a public API - in my case public OpenWeather API.
 The website interact with the chosen API, retrieve data and present it in a user-friendly manner.
@@ -6,8 +6,8 @@ The website interact with the chosen API, retrieve data and present it in a user
 ## Table of contents
 
 - [Overview](#overview)
-  - [Screenshot](#screenshot)
   - [How to start](#how-to-start)
+  - [Screenshot](#screenshot)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [Useful resources](#useful-resources)
