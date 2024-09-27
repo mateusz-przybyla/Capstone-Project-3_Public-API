@@ -14,7 +14,8 @@
       </h1>
     </div>
     <div class="container">
-      <div class="flex">
+      <div <% if (locals.location){%>
+        class="flex" <% } %> >
         <div class="widget">
           <%if(locals.location){ %>
           <p class="widget-loc"><%= location %></p>
@@ -54,9 +55,8 @@
           <p class="posStart">
             <span class="fw-600">Clouds: </span><%= clouds %>%
           </p>
-          <% } %>
+          <% } %> <%if(locals.sunriseTime){ %>
           <hr />
-          <%if(locals.sunriseTime){ %>
           <p class="posStart">
             <span class="fw-600">Sunrise time: </span><%= sunriseTime %>
           </p>
@@ -69,7 +69,8 @@
           <% } %>
         </div>
       </div>
-      <%if(locals.result || locals.error){ %>
+
+      <%if(locals.location || locals.error){ %>
       <hr />
       <%}%>
 
