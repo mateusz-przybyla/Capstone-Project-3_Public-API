@@ -28,10 +28,27 @@ app.post("/coordinates", async (req, res) => {
     );
     console.log(result);
 
+    const iconCode = result.data.weather[0].icon;
+
+    var rain = 0;
+
+    if (result.data.rain) {
+      rain = result.data.rain["1h"];
+    }
+
     res.render("index.ejs", {
-      result: result,
+      location: result.data.name,
+      weather: result.data.weather[0].description,
+      temp: Math.round(result.data.main.temp),
+      realFeel: Math.round(result.data.main.feels_like),
+      humidity: result.data.main.humidity,
+      pressure: result.data.main.pressure,
+      wind: result.data.wind.speed,
+      rain: rain,
+      clouds: result.data.clouds.all,
       sunriseTime: showLocalTime(result.data.sys.sunrise),
       sunsetTime: showLocalTime(result.data.sys.sunset),
+      icon: `https://openweathermap.org/img/wn/${iconCode}@2x.png`,
     });
   } catch (error) {
     console.log(error.message);
@@ -46,12 +63,29 @@ app.post("/city-name", async (req, res) => {
     const result = await axios.get(
       API_URL + `/weather?q=${req.body.city}&appid=${API_Key}&units=${units}`
     );
-    console.log(result);
+    console.log(result.data);
+
+    const iconCode = result.data.weather[0].icon;
+
+    var rain = 0;
+
+    if (result.data.rain) {
+      rain = result.data.rain["1h"];
+    }
 
     res.render("index.ejs", {
-      result: result,
+      location: result.data.name,
+      weather: result.data.weather[0].description,
+      temp: Math.round(result.data.main.temp),
+      realFeel: Math.round(result.data.main.feels_like),
+      humidity: result.data.main.humidity,
+      pressure: result.data.main.pressure,
+      wind: result.data.wind.speed,
+      rain: rain,
+      clouds: result.data.clouds.all,
       sunriseTime: showLocalTime(result.data.sys.sunrise),
       sunsetTime: showLocalTime(result.data.sys.sunset),
+      icon: `https://openweathermap.org/img/wn/${iconCode}@2x.png`,
     });
   } catch (error) {
     console.log(error.message);
@@ -69,10 +103,27 @@ app.post("/zip-code", async (req, res) => {
     );
     console.log(result);
 
+    const iconCode = result.data.weather[0].icon;
+
+    var rain = 0;
+
+    if (result.data.rain) {
+      rain = result.data.rain["1h"];
+    }
+
     res.render("index.ejs", {
-      result: result,
+      location: result.data.name,
+      weather: result.data.weather[0].description,
+      temp: Math.round(result.data.main.temp),
+      realFeel: Math.round(result.data.main.feels_like),
+      humidity: result.data.main.humidity,
+      pressure: result.data.main.pressure,
+      wind: result.data.wind.speed,
+      rain: rain,
+      clouds: result.data.clouds.all,
       sunriseTime: showLocalTime(result.data.sys.sunrise),
       sunsetTime: showLocalTime(result.data.sys.sunset),
+      icon: `https://openweathermap.org/img/wn/${iconCode}@2x.png`,
     });
   } catch (error) {
     console.log(error.message);
