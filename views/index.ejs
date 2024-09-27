@@ -14,46 +14,60 @@
       </h1>
     </div>
     <div class="container">
-      <div class="results">
-        <%if(locals.result){ %>
-        <p class="posStart">
-          <span class="fw-600">Location: </span><%= result.data.name %>
-        </p>
-        <hr />
-        <p class="posStart">
-          <span class="fw-600">Temperature: </span><%= result.data.main.temp
-          %>°C
-        </p>
-        <p class="posStart">
-          <span class="fw-600">Real feel: </span><%= result.data.main.feels_like
-          %>°C
-        </p>
-        <p class="posStart">
-          <span class="fw-600">Humidity: </span><%= result.data.main.humidity
-          %>%
-        </p>
-        <p class="posStart">
-          <span class="fw-600">Atmospheric pressure: </span><%=
-          result.data.main.pressure %> hPa
-        </p>
-        <p class="posStart">
-          <span class="fw-600">Wind: </span><%= result.data.wind.speed %> m/s
-        </p>
-        <p class="posStart">
-          <span class="fw-600">Clouds: </span><%= result.data.clouds.all %>%
-        </p>
-        <hr />
-        <% } %> <%if(locals.sunriseTime){ %>
-        <p class="posStart">
-          <span class="fw-600">Sunrise time: </span><%= sunriseTime %>
-        </p>
-        <% } %> <%if(locals.sunsetTime){ %>
-        <p class="posStart">
-          <span class="fw-600">Sunset time: </span><%= sunsetTime %>
-        </p>
-        <% } %> <%if(locals.error){ %>
-        <p><%= error %></p>
-        <% } %>
+      <div class="flex">
+        <div class="widget">
+          <%if(locals.location){ %>
+          <p class="widget-loc"><%= location %></p>
+          <%}%> <%if(locals.icon){ %>
+          <img src="<%= icon %>" />
+          <% } %> <%if(locals.weather){ %>
+          <p class="weather fw-600"><%= weather %></p>
+          <%}%>
+        </div>
+        <div>
+          <%if(locals.temp){ %>
+          <p class="posStart">
+            <span class="fw-600">Temperature: </span><%= temp %>°C
+          </p>
+          <%}%> <%if(locals.realFeel){ %>
+          <p class="posStart">
+            <span class="fw-600">Real feel: </span><%= realFeel %>°C
+          </p>
+          <%}%> <%if(locals.humidity){ %>
+          <p class="posStart">
+            <span class="fw-600">Humidity: </span><%= humidity %>%
+          </p>
+          <%}%> <%if(locals.pressure){ %>
+          <p class="posStart">
+            <span class="fw-600">Atmospheric pressure: </span><%= pressure %>
+            hPa
+          </p>
+          <%}%> <%if(locals.wind){ %>
+          <p class="posStart">
+            <span class="fw-600">Wind: </span><%= wind %> m/s
+          </p>
+          <%}%> <%if(locals.rain){ %>
+          <p class="posStart">
+            <span class="fw-600">Rain: </span><%= rain %> mm
+          </p>
+          <% } %> <%if(locals.clouds){ %>
+          <p class="posStart">
+            <span class="fw-600">Clouds: </span><%= clouds %>%
+          </p>
+          <% } %>
+          <hr />
+          <%if(locals.sunriseTime){ %>
+          <p class="posStart">
+            <span class="fw-600">Sunrise time: </span><%= sunriseTime %>
+          </p>
+          <% } %> <%if(locals.sunsetTime){ %>
+          <p class="posStart">
+            <span class="fw-600">Sunset time: </span><%= sunsetTime %>
+          </p>
+          <% } %> <%if(locals.error){ %>
+          <p><%= error %></p>
+          <% } %>
+        </div>
       </div>
       <%if(locals.result || locals.error){ %>
       <hr />

@@ -19,8 +19,25 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
 h1 {
   display: inline;
+}
+
+img {
+  height: 100px;
+  width: 100px;
 }
 
 input[type="text"] {
@@ -83,7 +100,13 @@ button[type="submit"]:hover {
   font-weight: 600;
 }
 
-.results {
-  width: 50%;
-  margin: auto;
+.widget-loc {
+  font-size: 35px;
+  margin-bottom: 0px;
+  margin-top: 15px;
+}
+
+.weather {
+  font-size: 18px;
+  margin-top: 5px;
 }
